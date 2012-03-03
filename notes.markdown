@@ -14,3 +14,5 @@ March 2, 2012
 - Knowing Ruby is useful when working with list comprehensions
 - Knowing Scheme is VERY helpful (obviously) for working with recursion
 - "let" vs "where", need to reread when I'm not as tired
+- Stopped after chapter 5 of LYAH
+- Still don't have the knowledge for problems 7-10

@@ -41,6 +41,14 @@ myReverse :: [a] -> [a]
 myReverse [] = []
 myReverse (x:xs) = myReverse xs ++ [x]
 
--- Problem 6: Find out whether a list is a palindrome.
+-- Problem 6: Find out whether a list is a palindrome
 isPalindrome :: (Eq a) => [a] -> Bool
 isPalindrome xs = (reverse xs) == xs
+
+-- Problem 7: Flatten a nested list structure
+
+-- Problem 8: Eliminate consecutive duplicates of list elements
+
+-- Problem 9: Pack consecutive duplicates of list elements into sublists
+
+-- Problem 10: Run-length encoding of a list
