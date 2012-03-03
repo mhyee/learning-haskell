@@ -33,3 +33,26 @@ factorial' n = n * factorial' (n - 1)
 length'' :: (Num b) => [a] -> b
 length'' [] = 0
 length'' (x:xs) = 1 + length'' xs
+
+-- Implementation of sum using recursion
+sum' :: (Num a) => [a] -> a
+sum' [] = 0
+sum' (x:xs) = x + sum' xs
+
+-- Takes two RealFloats and returns a String
+-- "| COND" is evaluated; if true, return that string
+-- Otherwise keep going
+-- "otherwise" is a catch-all that always returns true
+bmiTell :: (RealFloat a) => a -> a -> String
+bmiTell weight height
+  | weight / height^2 <= 18.5 = "You're underweight."
+  | weight / height^2 <= 25.0 = "You're normal."
+  | weight / height^2 <= 30.0 = "You're fat."
+  | otherwise                 = "You're REALLY fat."
+
+-- Defining an infix function
+myCompare :: (Ord a) => a -> a -> Ordering
+a `myCompare` b
+  | a > b     = GT
+  | a == b    = EQ
+  | otherwise = LT

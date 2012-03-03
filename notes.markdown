@@ -10,4 +10,6 @@ March 2, 2012
 - [GitHub repo][https://github.com/mhyee/learning-haskell] to keep track of progress
 - Testing for inequality uses "/=", not "!="
 - Spaces are used for function application
-- A lot of syntax to absorb: !, :, ++, ::, <-, ->, |, _, =>
+- A lot of syntax to absorb: !, :, ++, ::, <-, ->, |, _, =>, @
+- Knowing Ruby is useful when working with list comprehensions
+- Knowing Scheme is VERY helpful (obviously) for working with recursion
