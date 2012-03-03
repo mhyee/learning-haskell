@@ -13,3 +13,4 @@ March 2, 2012
 - A lot of syntax to absorb: !, :, ++, ::, <-, ->, |, _, =>, @
 - Knowing Ruby is useful when working with list comprehensions
 - Knowing Scheme is VERY helpful (obviously) for working with recursion
+- "let" vs "where", need to reread when I'm not as tired

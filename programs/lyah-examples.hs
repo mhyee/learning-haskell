@@ -1,3 +1,5 @@
+-- Examples made while following http://learnyouahaskell.com/chapters
+
 doubleMe x = x + x
 doubleUs x y = doubleMe x + doubleMe y
 doubleSmallNumber x = if x > 100 then x else x*2
@@ -45,10 +47,11 @@ sum' (x:xs) = x + sum' xs
 -- "otherwise" is a catch-all that always returns true
 bmiTell :: (RealFloat a) => a -> a -> String
 bmiTell weight height
-  | weight / height^2 <= 18.5 = "You're underweight."
-  | weight / height^2 <= 25.0 = "You're normal."
-  | weight / height^2 <= 30.0 = "You're fat."
-  | otherwise                 = "You're REALLY fat."
+  | bmi <= 18.5 = "You're underweight."
+  | bmi <= 25.0 = "You're normal."
+  | bmi <= 30.0 = "You're fat."
+  | otherwise   = "You're REALLY fat."
+  where bmi = weight / height^2
 
 -- Defining an infix function
 myCompare :: (Ord a) => a -> a -> Ordering

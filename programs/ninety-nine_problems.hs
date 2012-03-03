@@ -31,3 +31,16 @@ elementAt (_:xs) n = elementAt xs (n - 1)
 myLength :: [a] -> Integer
 myLength [] = 0
 myLength (_:xs) = 1 + myLength xs
+
+-- Problem 5: Reverse a list
+--  myReverse takes a list and returns an empty list
+--  The reverse of an empty list is the empty list
+--  Take the first element and append it to the reversed portion of the rest
+--  This is actually pretty inefficient
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse (x:xs) = myReverse xs ++ [x]
+
+-- Problem 6: Find out whether a list is a palindrome.
+isPalindrome :: (Eq a) => [a] -> Bool
+isPalindrome xs = (reverse xs) == xs
