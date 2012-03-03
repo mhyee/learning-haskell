@@ -43,6 +43,7 @@ sum' (x:xs) = x + sum' xs
 
 -- Takes two RealFloats and returns a String
 -- "| COND" is evaluated; if true, return that string
+-- This is called a "guard"
 -- Otherwise keep going
 -- "otherwise" is a catch-all that always returns true
 bmiTell :: (RealFloat a) => a -> a -> String
@@ -53,9 +54,44 @@ bmiTell weight height
   | otherwise   = "You're REALLY fat."
   where bmi = weight / height^2
 
--- Defining an infix function
+-- Defining an infix function `mycompare`
 myCompare :: (Ord a) => a -> a -> Ordering
 a `myCompare` b
   | a > b     = GT
   | a == b    = EQ
   | otherwise = LT
+
+-- Recursively find the max of a list
+maximum' :: (Ord a) => [a] -> a
+maximum' [x] = x
+maximum' (x:xs) = max x (maximum' xs)
+
+replicate' :: (Num i, Ord i) => i -> a -> [a]
+replicate' n x
+  | n <= 0    = []
+  | otherwise = x:replicate' (n-1) x
+
+take' :: (Num i, Ord i) => i -> [a] -> [a]
+take' n _
+  | n <= 0      = []
+take' _ []      = []
+take' n (x:xs)  = x:take' (n-1) xs
+
+zip' :: [a] -> [b] -> [(a,b)]
+zip' _ [] = []
+zip' [] _ = []
+zip' (x:xs) (y:ys) = (x,y):zip' xs ys
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' a [] = False
+elem' a (x:xs)
+  | a == x    = True
+  | otherwise = a `elem` xs
+
+-- Quicksort
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+  let smallerSorted = quicksort [a | a <- xs, a <= x]
+      biggerSorted  = quicksort [a | a <- xs, a > x]
+  in  smallerSorted ++ [x] ++ biggerSorted
