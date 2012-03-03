@@ -8,3 +8,6 @@ March 2, 2012
 =============
 - Official start of project at [SE Hack Day][http://sehackday.com/]
 - [GitHub repo][https://github.com/mhyee/learning-haskell] to keep track of progress
+- Testing for inequality uses "/=", not "!="
+- Spaces are used for function application
+- A lot of syntax to absorb: !, :, ++, ::, <-, ->, |, _, =>
