@@ -1,8 +1,10 @@
 # 1 Introduction
 
+* These are notes taken while going through [Learn You a Haskell](http://learnyouahaskell.com/chapters)
+
 * Tutorial is aimed for people with imperative programming experience (eg C, C++, Java), but not functional programming experience
 
-* These notes will carry my bias - I have had some experience with programming in Scheme
+* These notes will carry my bias -- I have had some experience with programming in Scheme
 
 ## What is Haskell?
 
@@ -28,5 +30,5 @@
 
 * GHC can run in an interactive (REPL) mode, with `ghci`
 	* Exit with `CTRL+D`
-	* Define functions in `foobar.hs`, and load in GHCi by typing `:l foobar`
+* Define functions in a file `foobar.hs`, and load in GHCI by typing `:l foobar`
 	* To reload, type `:r`
