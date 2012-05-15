@@ -15,6 +15,7 @@
 
 * Most functions in Haskell are *prefix* functions
 	* Some exceptions are math functions, eg `*` is an *infix* function
+    * To examine the type of a prefix function, or pass it to another function, or call it as a prefix function, surround with parentheses, eg `(*) 3 4`
 
 * Functions are called in the form `funcName param1 param2 … paramN`
 	* Spaces (not parentheses) denote function application
