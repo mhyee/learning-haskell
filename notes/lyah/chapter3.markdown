@@ -1,4 +1,4 @@
-# Types and Typeclasses
+# 3 Types and Typeclasses
 
 ## Types
 

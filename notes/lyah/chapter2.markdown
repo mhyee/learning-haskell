@@ -11,6 +11,11 @@
 
 * Haskell is strongly-typed, so `5 + "llama"` causes an exception
 
+* Comments start with `--`
+  * Note that `--` must not be part of a legal construct (like `-->` or `|--`), leave a space afterwards to be safe
+
+* A nested comment starts with `{-` and ends with `-}`
+
 ## Function application
 
 * Most functions in Haskell are *prefix* functions
