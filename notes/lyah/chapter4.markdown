@@ -7,6 +7,7 @@
   * "Catch all" is always the last one (since nothing else is matched)
 
 ```haskell
+  factorial :: (Integral a) => a -> a
   factorial 0 = 1
   factorial n = n * factorial (n - 1)
 ```
@@ -19,8 +20,13 @@
 * ``_`` (don't care) also works with pattern matching
 
 ```haskell
+  first :: (a, b, c) -> a
   first (x, _, _) = x
+
+  second :: (a, b, c) -> b
   second (_, y, _) = y
+
+  third :: (a, b, c) -> c
   third (_, _, z) = z
 ```
 
@@ -102,9 +108,11 @@
   * Pattern matching in function definitions is syntactic sugar for case expressions
 
 ```haskell
+  factorial :: (Integral a) => a -> a
   factorial 0 = 1
   factorial n = n * factorial (n - 1)
   -- Is equivalent to
+  factorial' :: (Integral a) => a -> a
   factorial' n = case n of 0 -> 1
                            n -> n * factorial (n - 1)
 ```
