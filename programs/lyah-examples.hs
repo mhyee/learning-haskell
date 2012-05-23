@@ -62,26 +62,42 @@ a `myCompare` b
   | otherwise = LT
 
 -- Recursively find the max of a list
+-- The maximum of a list is the max of the first head and the tail of the list
 maximum' :: (Ord a) => [a] -> a
+maximum' [] = error "empty list"
 maximum' [x] = x
 maximum' (x:xs) = max x (maximum' xs)
 
+-- Takes an int N and an element, and returns a list with N copies of the element
+-- If N <= 0, we return an empty list
+-- Otherwise, we take the element and concatenate it with a list of N-1 copies of it
+-- We recursively generate the list of N-1 copies
 replicate' :: (Num i, Ord i) => i -> a -> [a]
 replicate' n x
   | n <= 0    = []
   | otherwise = x:replicate' (n-1) x
 
+-- Take a certain number of elements from a list
+-- In the base conditions, if we want <= 0 elements or if the list is empty, return an empty list
+-- Otherwise return head, and recursively call take' with N-1 on the tail of the list
 take' :: (Num i, Ord i) => i -> [a] -> [a]
 take' n _
   | n <= 0      = []
 take' _ []      = []
 take' n (x:xs)  = x:take' (n-1) xs
 
+-- Zip two lists together, so they're as long as the shorter of the two
+-- So if either list is empty, the result is empty
+-- Otherwise, put the two heads in a tuple, and zip the tails
 zip' :: [a] -> [b] -> [(a,b)]
 zip' _ [] = []
 zip' [] _ = []
 zip' (x:xs) (y:ys) = (x,y):zip' xs ys
 
+-- Check if an element is in a list
+-- The given element is obviously not in an empty list
+-- If it's equal to the head, we've found it
+-- Otherwise, check if it's in the tail
 elem' :: (Eq a) => a -> [a] -> Bool
 elem' a [] = False
 elem' a (x:xs)
@@ -89,6 +105,10 @@ elem' a (x:xs)
   | otherwise = a `elem` xs
 
 -- Quicksort
+-- Take the first element to be the pivot
+-- Construct smallerSorted, which is sorted and has all the elements less than the pivot
+-- Construct biggerSorted, which is sorted and has all the elements larger than the pivot
+-- Concatenate the two lists and the pivot
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
 quicksort (x:xs) =
