@@ -81,6 +81,7 @@
 	* `maxBound :: Bool` returns `True`
 
 * `Num` is for all numbers, eg whole numbers and real numbers
+  * Note that in version 7.4.1 of GHC, `Num` no longer has `Eq` or `Show` superclasses
 
 * `Integral` is only for whole numbers, ie `Int` and `Integer` types
 	* Useful function `fromIntegral :: (Num b, Integral a) => a -> b` which turns a whole number into a general number

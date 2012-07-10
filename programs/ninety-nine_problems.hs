@@ -20,7 +20,7 @@ myButLast (_:xs) = myButLast xs
 --  elementAt takes a list of b's and a Num, and returns a b
 --  elementAt with a list and 1 returns the first element
 --  Otherwise take the "rest" of the list and decrement the number
-elementAt :: Num a => [b] -> a -> b
+elementAt :: (Num a, Eq a, Show a) => [b] -> a -> b
 elementAt (x:_) 1 = x
 elementAt (_:xs) n = elementAt xs (n - 1)
 
