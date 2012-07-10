@@ -115,3 +115,77 @@ quicksort (x:xs) =
   let smallerSorted = quicksort [a | a <- xs, a <= x]
       biggerSorted  = quicksort [a | a <- xs, a > x]
   in  smallerSorted ++ [x] ++ biggerSorted
+
+-- Partially applied functions
+multThree :: (Num a) => a -> a -> a -> a
+multThree x y z = x * y * z
+-- multThree 9 returns a function which takes two parameters
+multTwoWithNine = multThree 9
+-- multTwoWithNine 2 returns a function which takes one parameter
+multWithEighteen = multTwoWithNine 2
+
+-- Compare a number with 100
+compareWithHundred :: (Num a, Ord a) => a -> Ordering
+-- compareWithHundred x = compare 100 x
+-- Thanks to currying, we can remove the x
+-- compare 100 returns a function which takes one parameter
+compareWithHundred = compare 100
+
+-- A function that applies a function twice to a param
+applyTwice :: (a -> a) -> a -> a
+applyTwice f x = f (f x)
+
+-- Zip two lists together with a function
+-- If either list is empty, return an empty list
+-- Otherwise, apply the function to both heads, and recursively zip the rest of the list
+zipWith' :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith' _ [] _ = []
+zipWith' _ _ [] = []
+zipWith' f (x:xs) (y:ys) = f x y : zipWith' f xs ys
+
+-- Return a function that is like the original one, but with the arguments flipped
+flip' :: (a -> b -> c) -> (b -> a -> c)
+flip' f = g
+    where g x y = f y x
+-- Another implementation with currying
+flip'' :: (a -> b -> c) -> b -> a -> c
+flip'' f y x = f x y
+-- Another implementation with a lambda
+flip''' :: (a -> b -> c) -> b -> a -> c
+flip''' f = \x y -> f y x
+
+-- First, define a "chain" (of Collatz numbers)
+-- If C_n is even, then C_{n+1} = C_n / 2
+-- If C_n is odd, then C_{n+1} = 3*C_n + 1
+-- Stop at C_k = 1
+-- Given a number, return a list of the entire chain
+chain :: (Integral a) => a -> [a]
+chain 1 = [1]
+chain n
+    | even n = n : chain (n `div` 2)
+    | odd n  = n : chain (n*3 + 1)
+
+-- For all starting numbers 1..100, how many chains have length greater than 15?
+numLongChains :: Int
+numLongChains = length (filter isLong (map chain [1..100]))
+    where isLong xs = length xs > 15
+
+-- Alternate implementation of numLongChains with a lambda
+numLongChains' :: Int
+numLongChains' = length (filter (\xs -> length xs > 15) (map chain [1..100]))
+
+-- Implementing sum with a left fold
+sum'' :: (Num a) => [a] -> a
+sum'' xs = foldl (\acc x -> acc + x) 0 xs
+
+-- A variation of sum with a left fold, but simplified
+sum''' :: (Num a) => [a] -> a
+sum''' = foldl (+) 0
+
+-- Implementing map with a right fold
+map' :: (a -> b) -> [a] -> [b]
+map' f xs = foldr (\x acc -> f x : acc) [] xs
+
+-- Another implementation of sum, this time with an implicit starting value
+sum'''' :: (Num a) => [a] -> a
+sum'''' = foldl1 (+)

@@ -1,5 +1,7 @@
 # 5 Recursion
 
+* **Note:** This section is a little sparse in examples, because I had already encountered recursion before and am fairly comfortable with it
+
 ## Introduction to recursion
 
 * Function is defined in terms of itself
